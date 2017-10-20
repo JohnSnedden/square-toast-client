@@ -5,14 +5,6 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
-const onSignUp = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  api.signUp(data)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
-}
-
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
@@ -33,19 +25,46 @@ const onNewUserCancel = function () {
   $('#sign-in-div').removeClass('hidden')
 }
 
+const onSignUp = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
+}
+
+const onChangePasswordBtn = function () {
+  event.preventDefault()
+  $('#change-password-div').removeClass('hidden')
+  $('#nav-user-dropdown-change-password').addClass('disabled')
+}
+
+const onChangePasswordCancel = function () {
+  event.preventDefault()
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
+  $('#change-password-div').addClass('hidden')
+}
+
+const onChangePassword = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
-  $('#sign-up').on('submit', onSignUp)
-  // $('#change-password').on('submit', onChangePassword)
 
-  // $('#new-user').click(onNewUser)
   $('#new-user').on('click', onNewUser)
-  // $('#new-user-cancel').click(onNewUserCancel)
   $('#new-user-cancel').on('click', onNewUserCancel)
+  $('#sign-up').on('submit', onSignUp)
+
+  $('#nav-user-dropdown-change-password').on('click', onChangePasswordBtn)
+  $('#change-password-cancel').on('click', onChangePasswordCancel)
+  $('#change-password').on('submit', onChangePassword)
 
   // $('#nav-user-dropdown-sign-out').click(onSignOut)
-  // $('#nav-user-dropdown-change-password').click(onChangePasswordBtn)
-  // $('#change-password-cancel').click(onChangePasswordCancel)
 }
 
 module.exports = {

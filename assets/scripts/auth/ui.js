@@ -24,13 +24,23 @@ const signInFailure = function () {
   $('#message').text('Error on sign in')
 }
 
+const changePasswordSuccess = function () {
+  $('#message').text('Password changed successfully')
+  $('#change-password-div').addClass('hidden')
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
+}
+
+const changePasswordFailure = function () {
+  $('#message').text('Error changing password')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
-  // changePasswordSuccess,
-  // changePasswordFailure,
+  signInFailure,
+  changePasswordSuccess,
+  changePasswordFailure
   // signOutSuccess,
   // signOutFailure
 }
