@@ -53,6 +53,14 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+  $('#nav-user-dropdown-change-password').removeClass('disabled')
+}
+
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
 
@@ -64,7 +72,7 @@ const addHandlers = function () {
   $('#change-password-cancel').on('click', onChangePasswordCancel)
   $('#change-password').on('submit', onChangePassword)
 
-  // $('#nav-user-dropdown-sign-out').click(onSignOut)
+  $('#nav-user-dropdown-sign-out').on('click', onSignOut)
 }
 
 module.exports = {
