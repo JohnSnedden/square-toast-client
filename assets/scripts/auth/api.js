@@ -11,13 +11,13 @@ const signUp = function (data) {
   })
 }
 
-// const signIn = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-in',
-//     method: 'POST',
-//     data
-//   })
-// }
+const signIn = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-in',
+    method: 'POST',
+    data
+  })
+}
 
 // const changePassword = function (data) {
 //   return $.ajax({
@@ -41,8 +41,8 @@ const signUp = function (data) {
 // }
 
 module.exports = {
-  signUp
-  // signIn,
+  signUp,
+  signIn
   // changePassword,
   // signOut
 }
