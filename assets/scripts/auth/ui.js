@@ -18,6 +18,7 @@ const signInSuccess = function (data) {
   $('#sign-in-div').addClass('hidden')
   $('#btn-bar').removeClass('hidden')
   $('#nav-user-dropdown').removeClass('hidden')
+  $('#order-create-div').removeClass('hidden')
 }
 
 const signInFailure = function () {
@@ -38,6 +39,7 @@ const signOutSuccess = function () {
   $('#message').text('Signed out successfully')
   store.user = null
   $('#nav-user-dropdown').addClass('hidden')
+  $('#order-create-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
 }
 

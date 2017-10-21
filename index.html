@@ -42,90 +42,128 @@
       <!-- Auth forms -->
       <div class="container-fluid auth-forms" id="auth">
 
-              <!-- sign-in -->
-              <div class="row" id="sign-in-div">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <form id="sign-in">
-                    <h3>Sign in</h3>
-                    <p>Please sign in to play Tic-Tac-Toe</p>
-                    <br>
-                    <div class="form-group">
-                      <label for="sign-in-email">Email</label>
-                      <input type="email" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                      <label for="sign-in-password">Password</label>
-                      <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Sign in</button>
-                  </form>
-                  <br>
-                  <a id="new-user">New user?</a>
-                  <br>
-                  <br>
-                </div>
+        <!-- sign-in -->
+        <div class="row" id="sign-in-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="sign-in">
+              <h3>Sign in</h3>
+              <p>Please sign in to play Tic-Tac-Toe</p>
+              <br>
+              <div class="form-group">
+                <label for="sign-in-email">Email</label>
+                <input type="email" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-in-password">Password</label>
+                <input type="password" class="form-control" id="sign-in-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Sign in</button>
+            </form>
+            <br>
+            <a id="new-user">New user?</a>
+            <br>
+            <br>
+          </div>
+        </div>
+
+        <!-- sign-up -->
+        <div class="row hidden" id="sign-up-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="sign-up">
+              <h3>Sign up</h3>
+              <p>Create your Tic-Tac-Toe account</p>
+              <br>
+              <div class="form-group">
+                <label for="sign-up-email">Email</label>
+                <input type="email" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password">Password</label>
+                <input type="password" class="form-control" id="sign-up-password" name="credentials[password]" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="sign-up-password-conf">Password confirmation</label>
+                <input type="password" class="form-control" id="sign-up-password-conf" name="credentials[password_confirmation]" placeholder="Re-enter password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Sign up</button>
+              <button type="button" class="btn btn-secondary" id="new-user-cancel" name="cancel">Cancel</button>
+              <br>
+              <br>
+            </form>
+          </div>
+        </div>
+
+        <!-- change password -->
+        <div class="row hidden" id="change-password-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="change-password">
+              <h3>Change Password</h3>
+              <p></p>
+              <br>
+              <div class="form-group">
+                <label for="change-password-old">Current password</label>
+                <input type="password" class="form-control" id="change-password-old" name="passwords[old]" placeholder="Current password">
+              </div>
+              <div class="form-group">
+                <label for="change-password-new">New password</label>
+                <input type="password" class="form-control" id="change-password-new" name="passwords[new]" placeholder="new password">
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Change Password</button>
+              <button type="button" class="btn btn-secondary" id="change-password-cancel" name="cancel">Cancel</button>
+              <br>
+              <br>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- message text div -->
+      <div class="container-fluid text-center messages-div">
+        <div class="row">
+          <div class="col-12">
+            <section id="message"></section>
+          </div>
+        </div>
+      </div>
+
+      <!-- order create form -->
+      <div class="container-fluid">
+
+        <div class="row hidden" id="order-create-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <form id="order-create">
+              <h3>New Order</h3>
+              <br>
+
+              <div class="form-group">
+                <label for="order-create-date">Date</label>
+                <input type="date" class="form-control" id="order-create-date" name="order[date]" required>
               </div>
 
-              <!-- sign-up -->
-              <div class="row hidden" id="sign-up-div">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <form id="sign-up">
-                    <h3>Sign up</h3>
-                    <p>Create your Tic-Tac-Toe account</p>
-                    <br>
-                    <div class="form-group">
-                      <label for="sign-up-email">Email</label>
-                      <input type="email" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                      <label for="sign-up-password">Password</label>
-                      <input type="password" class="form-control" id="sign-up-password" name="credentials[password]" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="sign-up-password-conf">Password confirmation</label>
-                      <input type="password" class="form-control" id="sign-up-password-conf" name="credentials[password_confirmation]" placeholder="Re-enter password">
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Sign up</button>
-                    <button type="button" class="btn btn-secondary" id="new-user-cancel" name="cancel">Cancel</button>
-                    <br>
-                    <br>
-                  </form>
-                </div>
+              <div class="form-group">
+                <!-- status field hidden, initial status upon creation should always be 'Open' -->
+                <input type="hidden" class="form-control" id="order-create-status" name="order[status]" placeholder="Status" value="Open" required>
               </div>
 
-              <!-- change password -->
-              <div class="row hidden" id="change-password-div">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <form id="change-password">
-                    <h3>Change Password</h3>
-                    <p></p>
-                    <br>
-                    <div class="form-group">
-                      <label for="change-password-old">Current password</label>
-                      <input type="password" class="form-control" id="change-password-old" name="passwords[old]" placeholder="Current password">
-                    </div>
-                    <div class="form-group">
-                      <label for="change-password-new">New password</label>
-                      <input type="password" class="form-control" id="change-password-new" name="passwords[new]" placeholder="new password">
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Change Password</button>
-                    <button type="button" class="btn btn-secondary" id="change-password-cancel" name="cancel">Cancel</button>
-                    <br>
-                    <br>
-                  </form>
-                </div>
+              <div class="form-group">
+                <label for="order-create-description">Description</label>
+                <input type="text" class="form-control" id="order-create-description" name="order[description]" placeholder="" required>
               </div>
 
-            </div>
-
-            <!-- message text div -->
-            <div class="container-fluid text-center messages-div">
-              <div class="row">
-                <div class="col-12">
-                  <section id="message"></section>
-                </div>
+              <div class="form-group">
+                <label for="order-create-price">Price</label>
+                <input type="number" class="form-control" id="order-create-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
               </div>
-            </div>
+
+              <button type="submit" class="btn btn-primary" name="submit">Save</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
 
     </body>
 </html>
