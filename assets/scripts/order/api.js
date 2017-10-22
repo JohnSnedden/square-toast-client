@@ -24,7 +24,18 @@ const orderList = function () {
   })
 }
 
+const orderGet = function (orderId) {
+  return $.ajax({
+    url: config.apiOrigin + '/orders/' + orderId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   orderCreate,
-  orderList
+  orderList,
+  orderGet
 }

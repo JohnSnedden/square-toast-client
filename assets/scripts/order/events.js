@@ -1,6 +1,7 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
+const store = require('../store.js')
 
 const api = require('./api')
 const ui = require('./ui')
@@ -12,6 +13,26 @@ const onBtnOrderNew = function () {
 const onBtnOrderList = function () {
   ui.showOrderList()
   onOrderList()
+}
+
+const onBtnOrderGet = function () {
+  // console.log('store.data.order is ', store.data.order)
+  // store.data.order = null
+  // console.log('store.data.order is ', store.data.order)
+  ui.showOrderGet()
+}
+
+// const onOrderListRowBtn = function () {
+//
+// }
+
+const onBtnOrderSearch = function (event) {
+  // const data = getFormFields(this)
+  event.preventDefault()
+  const orderId = $('#order-edit-input-id').val()
+  api.orderGet(orderId)
+    .then(ui.orderGetSuccess)
+    .catch(ui.orderGetFailure)
 }
 
 const onOrderCreate = function (event) {
@@ -36,6 +57,8 @@ const onOrderList = function (event) {
 const addHandlers = function () {
   $('#btn-order-new').on('click', onBtnOrderNew)
   $('#btn-order-list').on('click', onBtnOrderList)
+  $('#order-edit-input').on('submit', onBtnOrderSearch)
+  $('#btn-order-get').on('click', onBtnOrderGet)
   $('#order-create').on('submit', onOrderCreate)
   $('#order-list').on('submit', onOrderList)
 }

@@ -43,7 +43,7 @@
       <div class="container-fluid text-center messages-div">
         <div class="row">
           <div class="col-12">
-            <section id="message"></section>
+            <section id="message"> </section>
           </div>
         </div>
       </div>
@@ -131,8 +131,9 @@
 
         <!-- order navigation buttons -->
         <div class="row hidden" id="order-btn-div">
-          <button type="button" class="btn btn-primary" id="btn-order-new">New Order</button>
+          <button type="button" class="btn btn-primary" id="btn-order-new">New order</button>
           <button type="button" class="btn btn-light" id="btn-order-list">Order list</button>
+          <button type="button" class="btn btn-light" id="btn-order-get">Edit order</button>
         </div>
 
         <!-- list of orders -->
@@ -172,6 +173,47 @@
             </form>
           </div>
         </div>
+
+        <!-- display / edit order -->
+        <div class="row hidden" id="order-edit-master-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <form id="order-edit-input">
+              <br>
+              <div class="form-group">
+                <label for="order-edit-input-id">Enter order number</label>
+                <input type="text" class="form-control" id="order-edit-input-id" name="order[id]" required>
+                <br>
+                <button type="submit" class="btn btn-primary" name="submit">Search</button>
+              </div>
+            </form>
+
+            <div class="row hidden" id="order-edit-div">
+              <form id="order-edit">
+                <!-- <h3>Edit Order</h3> -->
+                <br>
+                <div class="form-group">
+                  <label for="order-edit-date">Date</label>
+                  <input type="date" class="form-control" id="order-edit-date" name="order[date]" required>
+                </div>
+                <div class="form-group">
+                  <label for="order-edit-status">Status</label>
+                  <input type="text" class="form-control" id="order-edit-status" name="order[status]" placeholder="Status" value="Open" required>
+                </div>
+                <div class="form-group">
+                  <label for="order-edit-description">Description</label>
+                  <input type="text" class="form-control" id="order-edit-description" name="order[description]" placeholder="" required>
+                </div>
+                <div class="form-group">
+                  <label for="order-edit-price">Price</label>
+                  <input type="number" class="form-control" id="order-edit-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
+                </div>
+                <button type="submit" class="btn btn-primary" name="submit">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </body>
