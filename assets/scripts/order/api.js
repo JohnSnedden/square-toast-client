@@ -9,12 +9,22 @@ const orderCreate = function (data) {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-      // ContentType: 'application/json'
     },
     data
   })
 }
 
+const orderList = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/orders',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
-  orderCreate
+  orderCreate,
+  orderList
 }

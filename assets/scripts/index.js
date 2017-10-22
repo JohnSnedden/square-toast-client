@@ -7,9 +7,6 @@ const orderEvents = require('./order/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
-})
-
-$(() => {
   authEvents.addHandlers()
   orderEvents.addHandlers()
 })

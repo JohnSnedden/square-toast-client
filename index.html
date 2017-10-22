@@ -14,7 +14,7 @@
 
     <body class="container-fluid">
 
-      <!-- Top navigation bar -->
+      <!-- top navigation bar -->
       <nav class="navbar navbar-default navbar-expand navbar-inverse">
         <div class="container-fluid">
 
@@ -39,7 +39,17 @@
         </div>
       </nav>
 
-      <!-- Auth forms -->
+      <!-- message text div -->
+      <div class="container-fluid text-center messages-div">
+        <div class="row">
+          <div class="col-12">
+            <section id="message"></section>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- auth forms -->
       <div class="container-fluid auth-forms" id="auth">
 
         <!-- sign-in -->
@@ -50,7 +60,7 @@
               <br>
               <div class="form-group">
                 <label for="sign-in-email">Email</label>
-                <input type="email" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Enter email">
+                <input type="email" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="name@example.com">
               </div>
               <div class="form-group">
                 <label for="sign-in-password">Password</label>
@@ -116,52 +126,53 @@
 
       </div>
 
-      <!-- message text div -->
-      <div class="container-fluid text-center messages-div">
-        <div class="row">
-          <div class="col-12">
-            <section id="message"></section>
+      <!-- order forms -->
+      <div class="container-fluid" id="order">
+
+        <!-- order navigation buttons -->
+        <div class="row hidden" id="order-btn-div">
+          <button type="button" class="btn btn-primary" id="btn-order-new">New Order</button>
+          <button type="button" class="btn btn-light" id="btn-order-list">Order list</button>
+        </div>
+
+        <!-- list of orders -->
+        <div class="row hidden" id="order-list-div">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <form id="order-list">
+              <!-- <h3>Order List</h3> -->
+              <br>
+            </form>
+            <div id="order-list-content"></div>
           </div>
         </div>
-      </div>
 
-      <!-- order create form -->
-      <div class="container-fluid">
-
+        <!-- create order -->
         <div class="row hidden" id="order-create-div">
           <div class="col-xs-12 col-sm-12 col-md-12">
-
             <form id="order-create">
-              <h3>New Order</h3>
+              <!-- <h3>New Order</h3> -->
               <br>
-
               <div class="form-group">
                 <label for="order-create-date">Date</label>
                 <input type="date" class="form-control" id="order-create-date" name="order[date]" required>
               </div>
-
               <div class="form-group">
                 <!-- status field hidden, initial status upon creation should always be 'Open' -->
                 <input type="hidden" class="form-control" id="order-create-status" name="order[status]" placeholder="Status" value="Open" required>
               </div>
-
               <div class="form-group">
                 <label for="order-create-description">Description</label>
                 <input type="text" class="form-control" id="order-create-description" name="order[description]" placeholder="" required>
               </div>
-
               <div class="form-group">
                 <label for="order-create-price">Price</label>
                 <input type="number" class="form-control" id="order-create-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
               </div>
-
               <button type="submit" class="btn btn-primary" name="submit">Save</button>
             </form>
-
           </div>
         </div>
       </div>
-
 
     </body>
 </html>
