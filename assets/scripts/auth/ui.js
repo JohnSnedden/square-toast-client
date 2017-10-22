@@ -20,6 +20,7 @@ const signInSuccess = function (data) {
   $('#order-btn-div').removeClass('hidden')
   $('#order-list-div').removeClass('hidden')
   $('#order-create-div').removeClass('hidden')
+  $('#btn-order-new').addClass('btn-primary')
 }
 
 const signInFailure = function () {
@@ -44,6 +45,10 @@ const signOutSuccess = function () {
   $('#order-create-div').addClass('hidden')
   $('#order-list-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
+  $('#order-edit-master-div').addClass('hidden')
+  $('#order-list-content').empty()
+  $('#btn-order-list').removeClass('btn-primary')
+  $('#btn-order-get').removeClass('btn-primary')
 }
 
 const signOutFailure = function () {

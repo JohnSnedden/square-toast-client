@@ -34,8 +34,19 @@ const orderGet = function (orderId) {
   })
 }
 
+const orderDestroy = function (orderId) {
+  return $.ajax({
+    url: config.apiOrigin + '/orders/' + orderId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   orderCreate,
   orderList,
-  orderGet
+  orderGet,
+  orderDestroy
 }

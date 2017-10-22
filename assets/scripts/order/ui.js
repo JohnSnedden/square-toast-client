@@ -46,7 +46,10 @@ const showOrderGet = function () {
 document.getElementById('order-create-date').valueAsDate = new Date()
 
 const orderCreateSuccess = function (data) {
-  $('#message').text('Order created successfully')
+  $('#message').text('Order ' + data.order.id + ' created!')
+  $('#order-create-description').val('')
+  $('#order-create-price').val('')
+  $('#order-create-description').focus()
 }
 
 const orderCreateFailure = function () {
@@ -70,7 +73,6 @@ const orderListFailure = function () {
 const orderGetSuccess = function (data) {
   $('#message').text('Order ' + data.order.id + ' located')
   store.order = data.order
-  console.log('data.order is ', data.order)
   $('#order-edit-div').removeClass('hidden')
   $('#order-edit-date').val(data.order.date)
   $('#order-edit-status').val(data.order.status)
@@ -79,13 +81,37 @@ const orderGetSuccess = function (data) {
 }
 
 const orderGetFailure = function () {
-  const orderId = $('#order-edit-input-id').val()
-  $('#message').text('Unable to find order ' + orderId)
+  $('#message').text('Unable to find order ' + store.order.id)
+  store.order = null
   $('#order-edit-div').addClass('hidden')
   $('#order-edit-date').val('')
   $('#order-edit-status').val('')
   $('#order-edit-description').val('')
   $('#order-edit-price').val('')
+}
+
+const orderDestroySuccess = function () {
+  console.log('in orderDestroySuccess, store.order is ', store.order)
+  $('#message').text('Order ' + store.order.id + ' deleted')
+  store.order = null
+  console.log('in orderDestroySuccess, store.order is ', store.order)
+  $('#order-edit-div').addClass('hidden')
+  $('#order-edit-input-id').val('')
+  $('#order-edit-date').val('')
+  $('#order-edit-status').val('')
+  $('#order-edit-description').val('')
+  $('#order-edit-price').val('')
+  $('#orderDeleteConfirmation').modal('hide')
+}
+
+const orderDestroyFailure = function () {
+  const orderId = $('#order-edit-input-id').val()
+  $('#message').text('Unable to delete order ' + orderId)
+  // $('#order-edit-div').addClass('hidden')
+  // $('#order-edit-date').val('')
+  // $('#order-edit-status').val('')
+  // $('#order-edit-description').val('')
+  // $('#order-edit-price').val('')
 }
 
 module.exports = {
@@ -98,5 +124,7 @@ module.exports = {
   orderListClear,
   orderListFailure,
   orderGetSuccess,
-  orderGetFailure
+  orderGetFailure,
+  orderDestroySuccess,
+  orderDestroyFailure
 }
