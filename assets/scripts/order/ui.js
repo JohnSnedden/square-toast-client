@@ -9,10 +9,9 @@ const showOrderNew = function () {
   $('#order-list-div').addClass('hidden')
   $('#order-edit-master-div').addClass('hidden')
   $('#btn-order-new').addClass('btn-primary')
-  // $('#btn-order-new').removeClass('btn-light')
   $('#btn-order-list').removeClass('btn-primary')
-  // $('#btn-order-list').addClass('btn-light')
   $('#btn-order-get').removeClass('btn-primary')
+  $('#order-create-description').focus()
 }
 
 const showOrderList = function () {
@@ -21,9 +20,7 @@ const showOrderList = function () {
   $('#order-list-div').removeClass('hidden')
   $('#order-edit-master-div').addClass('hidden')
   $('#btn-order-new').removeClass('btn-primary')
-  // $('#btn-order-new').addClass('btn-light')
   $('#btn-order-list').addClass('btn-primary')
-  // $('#btn-order-list').removeClass('btn-light')
   $('#btn-order-get').removeClass('btn-primary')
 }
 
@@ -33,9 +30,7 @@ const showOrderGet = function () {
   $('#order-list-div').addClass('hidden')
   $('#order-edit-master-div').removeClass('hidden')
   $('#btn-order-new').removeClass('btn-primary')
-  // $('#btn-order-new').addClass('btn-light')
   $('#btn-order-list').removeClass('btn-primary')
-  // $('#btn-order-list').removeClass('btn-light')
   $('#btn-order-get').addClass('btn-primary')
 
   $('#order-edit-input-id').val('')
@@ -90,11 +85,24 @@ const orderGetFailure = function () {
   $('#order-edit-price').val('')
 }
 
+const orderUpdateSuccess = function (data) {
+  $('#message').text('Order ' + data.order.id + ' updated!')
+  $('#order-edit-input-id').val('')
+  $('#order-edit-date').val('')
+  $('#order-edit-status').val('')
+  $('#order-edit-description').val('')
+  $('#order-edit-price').val('')
+  $('#order-edit-div').addClass('hidden')
+  $('#order-edit-input-id').focus()
+}
+
+const orderUpdateFailure = function () {
+  $('#message').text('Error updating order')
+}
+
 const orderDestroySuccess = function () {
-  console.log('in orderDestroySuccess, store.order is ', store.order)
   $('#message').text('Order ' + store.order.id + ' deleted')
   store.order = null
-  console.log('in orderDestroySuccess, store.order is ', store.order)
   $('#order-edit-div').addClass('hidden')
   $('#order-edit-input-id').val('')
   $('#order-edit-date').val('')
@@ -107,11 +115,6 @@ const orderDestroySuccess = function () {
 const orderDestroyFailure = function () {
   const orderId = $('#order-edit-input-id').val()
   $('#message').text('Unable to delete order ' + orderId)
-  // $('#order-edit-div').addClass('hidden')
-  // $('#order-edit-date').val('')
-  // $('#order-edit-status').val('')
-  // $('#order-edit-description').val('')
-  // $('#order-edit-price').val('')
 }
 
 module.exports = {
@@ -125,6 +128,8 @@ module.exports = {
   orderListFailure,
   orderGetSuccess,
   orderGetFailure,
+  orderUpdateSuccess,
+  orderUpdateFailure,
   orderDestroySuccess,
   orderDestroyFailure
 }

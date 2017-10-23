@@ -21,6 +21,7 @@ const signInSuccess = function (data) {
   $('#order-list-div').removeClass('hidden')
   $('#order-create-div').removeClass('hidden')
   $('#btn-order-new').addClass('btn-primary')
+  $('#order-create-description').focus()
 }
 
 const signInFailure = function () {

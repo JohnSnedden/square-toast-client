@@ -34,6 +34,17 @@ const orderGet = function (orderId) {
   })
 }
 
+const orderUpdate = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/orders/' + store.order.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const orderDestroy = function (orderId) {
   return $.ajax({
     url: config.apiOrigin + '/orders/' + orderId,
@@ -48,5 +59,6 @@ module.exports = {
   orderCreate,
   orderList,
   orderGet,
+  orderUpdate,
   orderDestroy
 }

@@ -16,9 +16,6 @@ const onBtnOrderList = function () {
 }
 
 const onBtnOrderGet = function () {
-  // console.log('store.data.order is ', store.data.order)
-  // store.data.order = null
-  // console.log('store.data.order is ', store.data.order)
   ui.showOrderGet()
 }
 
@@ -54,8 +51,15 @@ const onOrderList = function (event) {
     .catch(ui.orderListFailure)
 }
 
+const onOrderUpdate = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.orderUpdate(data)
+    .then(ui.orderUpdateSuccess)
+    .catch(ui.orderUpdateFailure)
+}
+
 const onOrderDestroy = function (event) {
-  console.log('in onOrderDestroy, orderId is ', store.order.id)
   api.orderDestroy(store.order.id)
     .then(ui.orderDestroySuccess)
     .catch(ui.orderDestroyFailure)
@@ -68,6 +72,7 @@ const addHandlers = function () {
   $('#btn-order-get').on('click', onBtnOrderGet)
   $('#order-create').on('submit', onOrderCreate)
   $('#order-list').on('submit', onOrderList)
+  $('#order-update').on('submit', onOrderUpdate)
   $('#order-delete-confirm').on('click', onOrderDestroy)
 }
 

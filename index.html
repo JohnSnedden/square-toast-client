@@ -133,7 +133,7 @@
         <div class="row hidden" id="order-btn-div">
           <button type="button" class="btn btn-primary" id="btn-order-new">New order</button>
           <button type="button" class="btn btn-light" id="btn-order-list">Order list</button>
-          <button type="button" class="btn btn-light" id="btn-order-get">Edit order</button>
+          <button type="button" class="btn btn-light" id="btn-order-get">Display / Update order</button>
         </div>
 
         <!-- list of orders -->
@@ -174,7 +174,7 @@
           </div>
         </div>
 
-        <!-- display / edit order -->
+        <!-- display / update order -->
         <div class="row hidden" id="order-edit-master-div">
           <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -189,7 +189,7 @@
             </form>
 
             <div class="row hidden" id="order-edit-div">
-              <form id="order-edit">
+              <form id="order-update">
                 <!-- <h3>Edit Order</h3> -->
                 <br>
                 <div class="form-group">
@@ -208,7 +208,7 @@
                   <label for="order-edit-price">Price</label>
                   <input type="number" class="form-control" id="order-edit-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit">Save</button>
+                <button type="submit" class="btn btn-primary" name="submit">Update order</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#orderDeleteConfirmation">Delete order</button>
               </form>
             </div>
