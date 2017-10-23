@@ -58,7 +58,7 @@ Initial low-res hand sketch wireframes can be located [here](https://photos.app.
 
 
 ## User Stories
-I utilized a [Trello board](https://trello.com/b/WOcJ8Bqd) to keep track of my user stories, progress, and bugs/issues during initial development. After initial development is complete I will switch to using the [GitHub repo issues list](https://github.com/JohnSnedden/square-toast-api/issues) for ongoing issue management.
+I utilized a [Trello board](https://trello.com/b/WOcJ8Bqd) to keep track of my user stories, progress, and bugs/issues during initial development. After initial development is complete I will switch to using the [GitHub repo issues list](https://github.com/JohnSnedden/square-toast-client/issues) for ongoing issue management.
 
 
 ## Built With
