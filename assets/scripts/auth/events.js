@@ -4,6 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const api = require('./api')
 const ui = require('./ui')
+const sharedUi = require('../shared/ui.js')
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
@@ -15,14 +16,19 @@ const onSignIn = function (event) {
 
 const onNewUser = function () {
   event.preventDefault()
+  sharedUi.hideAlert()
   $('#sign-in-div').addClass('hidden')
   $('#sign-up-div').removeClass('hidden')
 }
 
 const onNewUserCancel = function () {
   event.preventDefault()
+  sharedUi.hideAlert()
   $('#sign-up-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
+  $('#sign-up-email').val('')
+  $('#sign-up-password').val('')
+  $('#sign-up-password-conf').val('')
 }
 
 const onSignUp = function (event) {
@@ -63,15 +69,12 @@ const onSignOut = function (event) {
 
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
-
   $('#new-user').on('click', onNewUser)
   $('#new-user-cancel').on('click', onNewUserCancel)
   $('#sign-up').on('submit', onSignUp)
-
   $('#nav-user-dropdown-change-password').on('click', onChangePasswordBtn)
   $('#change-password-cancel').on('click', onChangePasswordCancel)
   $('#change-password').on('submit', onChangePassword)
-
   $('#nav-user-dropdown-sign-out').on('click', onSignOut)
 }
 

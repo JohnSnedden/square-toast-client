@@ -1,45 +1,44 @@
 'use strict'
 
 const store = require('../store.js')
+const sharedUi = require('../shared/ui.js')
+const orderUi = require('../order/ui.js')
 
 const signUpSuccess = function (data) {
-  $('#message').text('New user created, please sign in')
+  sharedUi.showAlert('alert-success', 'User ' + data.user.email + ' created. Please sign in.')
   $('#sign-up-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
 }
 
 const signUpFailure = function () {
-  $('#message').text('Error on sign up')
+  sharedUi.showAlert('alert-danger', 'Error creating user')
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Signed in successfully')
-  store.user = data.user
   $('#sign-in-div').addClass('hidden')
   $('#nav-user-dropdown').removeClass('hidden')
   $('#order-btn-div').removeClass('hidden')
-  $('#order-list-div').removeClass('hidden')
-  $('#order-create-div').removeClass('hidden')
-  $('#btn-order-new').addClass('btn-primary')
-  $('#order-create-description').focus()
+  store.user = data.user
+  orderUi.showOrderNew()
+  sharedUi.showAlert('alert-info', 'User ' + data.user.email + ' signed in.')
 }
 
 const signInFailure = function () {
-  $('#message').text('Error on sign in')
+  sharedUi.showAlert('alert-danger', 'Error signing in')
 }
 
 const changePasswordSuccess = function () {
-  $('#message').text('Password changed successfully')
+  sharedUi.showAlert('alert-success', 'Password changed successfully')
   $('#change-password-div').addClass('hidden')
   $('#nav-user-dropdown-change-password').removeClass('disabled')
 }
 
 const changePasswordFailure = function () {
-  $('#message').text('Error changing password')
+  sharedUi.showAlert('alert-danger', 'Error changing password')
 }
 
 const signOutSuccess = function () {
-  $('#message').text('Signed out successfully')
+  sharedUi.showAlert('alert-info', 'User ' + store.user.email + ' signed out')
   store.user = null
   $('#nav-user-dropdown').addClass('hidden')
   $('#order-btn-div').addClass('hidden')
@@ -53,7 +52,7 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function () {
-  $('#message').text('Error signing out')
+  sharedUi.showAlert('alert-danger', 'Error signing out')
 }
 
 module.exports = {
