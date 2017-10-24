@@ -151,15 +151,14 @@
         <div class="row hidden" id="order-create-div">
           <div class="col-xs-12 col-sm-12 col-md-12">
             <form id="order-create">
-              <!-- <h3>New Order</h3> -->
               <br>
               <div class="form-group">
                 <label for="order-create-date">Date</label>
                 <input type="date" class="form-control" id="order-create-date" name="order[date]" required>
               </div>
               <div class="form-group">
-                <!-- status field hidden, initial status upon creation should always be 'Open' -->
-                <input type="hidden" class="form-control" id="order-create-status" name="order[status]" placeholder="Status" value="Open" required>
+                <!-- status field hidden, initial status upon creation should always be 'open' -->
+                <input type="hidden" class="form-control" id="order-create-status" name="order[status]" placeholder="Status" value="open" required>
               </div>
               <div class="form-group">
                 <label for="order-create-description">Description</label>
@@ -190,15 +189,20 @@
 
             <div class="row hidden" id="order-edit-div">
               <form id="order-update">
-                <!-- <h3>Edit Order</h3> -->
+                <br>
+                <div>
+                  <label>Status</label>
+                  <span class="badge badge-pill badge-info" id="order-edit-status-pill">-</span>
+                  <br>
+                </div>
                 <br>
                 <div class="form-group">
                   <label for="order-edit-date">Date</label>
                   <input type="date" class="form-control" id="order-edit-date" name="order[date]" required>
                 </div>
+                <!-- status input hidden - status updates are done through the status update buttons -->
                 <div class="form-group">
-                  <label for="order-edit-status">Status</label>
-                  <input type="text" class="form-control" id="order-edit-status" name="order[status]" placeholder="Status" value="Open" required>
+                  <input type="hidden" class="form-control" id="order-edit-status" name="order[status]" placeholder="Status" value="open" required>
                 </div>
                 <div class="form-group">
                   <label for="order-edit-description">Description</label>
@@ -208,8 +212,11 @@
                   <label for="order-edit-price">Price</label>
                   <input type="number" class="form-control" id="order-edit-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit">Update order</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#orderDeleteConfirmation">Delete order</button>
+                <button type="submit" class="btn btn-primary" name="submit">Update</button>
+                <button type="button" class="btn btn-success update-status" data-status="closed" >Close</button>
+                <button type="button" class="btn btn-warning update-status" data-status="open" >Reopen</button>
+                <button type="button" class="btn btn-warning update-status" data-status="cancelled" >Cancel</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#orderDeleteConfirmation">Delete</button>
               </form>
             </div>
           </div>
@@ -221,9 +228,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="orderDeleteConfirmationlabel">Delete order</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-                  <!-- <span aria-hidden="true">&times;</span> -->
-                </button>
               </div>
               <div class="modal-body">
                 <p>Are you sure that you want to delete this order?</p>

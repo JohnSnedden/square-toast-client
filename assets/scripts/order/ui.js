@@ -89,6 +89,7 @@ const orderGetSuccess = function (data) {
   // fill order edit form fields with order data from db
   $('#order-edit-date').val(data.order.date)
   $('#order-edit-status').val(data.order.status)
+  $('#order-edit-status-pill').text(data.order.status)
   $('#order-edit-description').val(data.order.description)
   $('#order-edit-price').val(data.order.price)
 }

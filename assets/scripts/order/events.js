@@ -2,7 +2,6 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`)
 const store = require('../store.js')
-
 const api = require('./api')
 const ui = require('./ui')
 
@@ -20,7 +19,6 @@ const onBtnOrderGet = function () {
 }
 
 const onBtnOrderSearch = function (event) {
-  // const data = getFormFields(this)
   event.preventDefault()
   const orderId = $('#order-edit-input-id').val()
   api.orderGet(orderId)
@@ -40,9 +38,7 @@ const onOrderList = function (event) {
   ui.orderListClear()
   api.orderList()
     .then(ui.orderListSuccess)
-    // this is where I can add an action to the table items
     .then(function () {
-      // $('.xxxxx').on('click', xxxxx)
       $('.clickable-row').on('click', onOrderListClick)
     })
     .catch(ui.orderListFailure)
@@ -65,6 +61,18 @@ const onOrderUpdate = function (event) {
     .catch(ui.orderUpdateFailure)
 }
 
+const onOrderStatusUpdate = function (event) {
+  const newStatus = event.target.getAttribute('data-status')
+  const data = {
+    'order': {
+      'status': newStatus
+    }
+  }
+  api.orderUpdate(data)
+    .then(ui.orderUpdateSuccess)
+    .catch(ui.orderUpdateFailure)
+}
+
 const onOrderDestroy = function (event) {
   api.orderDestroy(store.order.id)
     .then(ui.orderDestroySuccess)
@@ -80,6 +88,8 @@ const addHandlers = function () {
   $('#order-list').on('submit', onOrderList)
   $('#order-update').on('submit', onOrderUpdate)
   $('#order-delete-confirm').on('click', onOrderDestroy)
+  $('.update-status').on('click', onOrderStatusUpdate)
+  $('.order-edit-status').attr('disabled', true)
 }
 
 module.exports = {
