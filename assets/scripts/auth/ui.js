@@ -44,6 +44,7 @@ const signOutSuccess = function () {
   $('#order-btn-div').addClass('hidden')
   $('#order-create-div').addClass('hidden')
   $('#order-list-div').addClass('hidden')
+  $('#change-password-div').addClass('hidden')
   $('#sign-in-div').removeClass('hidden')
   $('#order-edit-master-div').addClass('hidden')
   $('#order-list-content').empty()
