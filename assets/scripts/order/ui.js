@@ -65,6 +65,9 @@ const orderCreateFailure = function () {
 
 const orderListSuccess = function (data) {
   sharedUi.showAlert('alert-info', 'Order list generated successfully')
+  data.orders.sort(function (a, b) {
+    return a.id - b.id
+  })
   const showOrdersHtml = showOrdersTemplate({ orders: data.orders })
   $('#order-list-content').append(showOrdersHtml)
 }
