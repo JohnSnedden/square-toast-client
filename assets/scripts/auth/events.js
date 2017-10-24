@@ -41,6 +41,8 @@ const onSignUp = function (event) {
 
 const onChangePasswordBtn = function () {
   event.preventDefault()
+  sharedUi.hideAlert()
+  $('#order').addClass('hidden')
   $('#change-password-div').removeClass('hidden')
   $('#nav-user-dropdown-change-password').addClass('disabled')
 }
@@ -49,6 +51,7 @@ const onChangePasswordCancel = function () {
   event.preventDefault()
   $('#nav-user-dropdown-change-password').removeClass('disabled')
   $('#change-password-div').addClass('hidden')
+  $('#order').removeClass('hidden')
 }
 
 const onChangePassword = function (event) {

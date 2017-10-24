@@ -31,6 +31,7 @@ const changePasswordSuccess = function () {
   sharedUi.showAlert('alert-success', 'Password changed successfully')
   $('#change-password-div').addClass('hidden')
   $('#nav-user-dropdown-change-password').removeClass('disabled')
+  $('#order').removeClass('hidden')
 }
 
 const changePasswordFailure = function () {
