@@ -82,7 +82,7 @@ const orderListFailure = function () {
 }
 
 const orderGetSuccess = function (data) {
-  sharedUi.showAlert('alert-success', 'Order # ' + data.order.id + ' located!')
+  sharedUi.showAlert('alert-info', 'Order # ' + data.order.id + ' displayed')
   store.order = data.order
   // show order form
   $('#order-edit-div').removeClass('hidden')

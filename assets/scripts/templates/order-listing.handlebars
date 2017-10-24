@@ -11,7 +11,7 @@
      </thead>
      <tbody>
        {{#each orders}}
-       <tr>
+       <tr class='clickable-row' style="cursor: pointer" data-id="{{ this.id }}">
            <td>{{ this.id }}</td>
            <td>{{ this.date }}</td>
            <td>{{ this.description }}</td>

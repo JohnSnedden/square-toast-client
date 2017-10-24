@@ -19,10 +19,6 @@ const onBtnOrderGet = function () {
   ui.showOrderGet()
 }
 
-// const onOrderListRowBtn = function () {
-//
-// }
-
 const onBtnOrderSearch = function (event) {
   // const data = getFormFields(this)
   event.preventDefault()
@@ -45,10 +41,20 @@ const onOrderList = function (event) {
   api.orderList()
     .then(ui.orderListSuccess)
     // this is where I can add an action to the table items
-    // .then(function () {
-    //   $('.xxxxx').on('click', xxxxx)
-    // })
+    .then(function () {
+      // $('.xxxxx').on('click', xxxxx)
+      $('.clickable-row').on('click', onOrderListClick)
+    })
     .catch(ui.orderListFailure)
+}
+
+const onOrderListClick = function () {
+  const orderId = event.target.parentNode.getAttribute('data-id')
+  ui.showOrderGet()
+  $('#order-edit-input-id').val(orderId)
+  api.orderGet(orderId)
+    .then(ui.orderGetSuccess)
+    .catch(ui.orderGetFailure)
 }
 
 const onOrderUpdate = function (event) {
