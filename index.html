@@ -134,6 +134,7 @@
           <button type="button" class="btn btn-primary" id="btn-order-new">New order</button>
           <button type="button" class="btn btn-light" id="btn-order-list">Order list</button>
           <button type="button" class="btn btn-light" id="btn-order-get">Display / Update order</button>
+          <button type="button" class="btn btn-light" id="btn-order-pos">POS (beta)</button>
         </div>
 
         <!-- list of orders -->
@@ -239,6 +240,74 @@
                 <button type="button" class="btn btn-danger" id="order-delete-confirm">Delete</button>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- order input pos panel -->
+        <div class="row hidden" id="order-create-pos">
+          <br>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <form id="order-create-pos-lhs">
+              <br>
+              <div class="form-group">
+                <label for="order-create-date">Date</label>
+                <input type="date" class="form-control" id="order-create-pos-date" name="order[date]" required>
+              </div>
+              <div class="form-group">
+                <!-- status field hidden, initial status upon creation should always be 'open' -->
+                <input type="hidden" class="form-control" id="order-create-pos-status" name="order[status]" placeholder="Status" value="open" required>
+              </div>
+              <div class="form-group">
+                <label for="order-create-description">Description</label>
+                <input type="text" class="form-control" id="order-create-pos-description" name="order[description]" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label for="order-create-price">Price</label>
+                <input type="number" class="form-control" id="order-create-pos-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit">Save</button>
+            </form>
+          </div>
+
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <h4>Mains</h4>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Vietnamese salad | " data-price=8 >Vietnamese salad</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Meatball sub | " data-price=8 >Meatball sub</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Wood fired pizza | " data-price=8 >Wood fired pizza</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Carnitas burrito | " data-price=8 >Carnitas burrito</button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button type="button" class="btn btn-clear" id="order-pos-btn-clear" >Clear order</button>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <h4>Sides</h4>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Fries | " data-price=3 >Fries</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Beans & Rice | " data-price=3 >Beans & Rice</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Sweet Potato Wedges | " data-price=3 >Sweet Potato Wedges</button>
+
+            <br>
+            <br>
+
+            <h4>Beverages</h4>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Water | " data-price=1.5 >Water</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Coke | " data-price=1.5 >Coke</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-info pos-btn-item" data-description="Iced Tea | " data-price=1.5 >Iced Tea</button>
           </div>
         </div>
 

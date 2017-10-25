@@ -10,10 +10,12 @@ const showOrderNew = function () {
   $('#order-create-div').removeClass('hidden')
   $('#order-list-div').addClass('hidden')
   $('#order-edit-master-div').addClass('hidden')
+  $('#order-create-pos').addClass('hidden')
   // adjust highlighting of section buttons
   $('#btn-order-new').addClass('btn-primary')
   $('#btn-order-list').removeClass('btn-primary')
   $('#btn-order-get').removeClass('btn-primary')
+  $('#btn-order-pos').removeClass('btn-primary')
   // clear input fields
   $('#order-create-date').val('')
   $('#order-create-description').val('')
@@ -30,10 +32,12 @@ const showOrderList = function () {
   $('#order-create-div').addClass('hidden')
   $('#order-list-div').removeClass('hidden')
   $('#order-edit-master-div').addClass('hidden')
+  $('#order-create-pos').addClass('hidden')
   // adjust highlighting of section buttons
   $('#btn-order-new').removeClass('btn-primary')
   $('#btn-order-list').addClass('btn-primary')
   $('#btn-order-get').removeClass('btn-primary')
+  $('#btn-order-pos').removeClass('btn-primary')
 }
 
 const showOrderGet = function () {
@@ -42,13 +46,47 @@ const showOrderGet = function () {
   $('#order-create-div').addClass('hidden')
   $('#order-list-div').addClass('hidden')
   $('#order-edit-master-div').removeClass('hidden')
+  $('#order-create-pos').addClass('hidden')
   // adjust highlighting of section buttons
   $('#btn-order-new').removeClass('btn-primary')
   $('#btn-order-list').removeClass('btn-primary')
   $('#btn-order-get').addClass('btn-primary')
+  $('#btn-order-pos').removeClass('btn-primary')
   // reset this screens content
   $('#order-edit-input-id').val('')
   $('#order-edit-div').addClass('hidden')
+}
+
+const showOrderPos = function () {
+  sharedUi.hideAlert()
+  // show appropriate div / hide all others
+  $('#order-create-div').addClass('hidden')
+  $('#order-list-div').addClass('hidden')
+  $('#order-edit-master-div').addClass('hidden')
+  $('#order-create-pos').removeClass('hidden')
+  // adjust highlighting of section buttons
+  $('#btn-order-new').removeClass('btn-primary')
+  $('#btn-order-list').removeClass('btn-primary')
+  $('#btn-order-get').removeClass('btn-primary')
+  $('#btn-order-pos').addClass('btn-primary')
+  // clear input fields
+  $('#order-create-pos-date').val('')
+  $('#order-create-pos-description').val('')
+  $('#order-create-pos-price').val('')
+  // default order date on new order form to today's date
+  document.getElementById('order-create-pos-date').valueAsDate = new Date()
+  // focus cursor in correct field for good UX
+  $('#order-create-pos-description').focus()
+}
+
+const posBtnPress = function (desc, price) {
+  $('#order-create-pos-description').val($('#order-create-pos-description').val() + desc)
+  $('#order-create-pos-price').val(+($('#order-create-pos-price').val()) + +price)
+}
+
+const posButtonClear = function () {
+  $('#order-create-pos-description').val('')
+  $('#order-create-pos-price').val('')
 }
 
 const orderCreateSuccess = function (data) {
@@ -60,6 +98,18 @@ const orderCreateSuccess = function (data) {
 }
 
 const orderCreateFailure = function () {
+  sharedUi.showAlert('alert-danger', 'Error creating order')
+}
+
+const orderCreatePosSuccess = function (data) {
+  sharedUi.showAlert('alert-success', 'Order # ' + data.order.id + ' created!')
+  // clear user entered values from input fields ready for next entry
+  $('#order-create-pos-description').val('')
+  $('#order-create-pos-price').val('')
+  $('#order-create-pos-description').focus()
+}
+
+const orderCreatePosFailure = function () {
   sharedUi.showAlert('alert-danger', 'Error creating order')
 }
 
@@ -170,8 +220,13 @@ module.exports = {
   showOrderNew,
   showOrderList,
   showOrderGet,
+  showOrderPos,
+  posBtnPress,
+  posButtonClear,
   orderCreateSuccess,
   orderCreateFailure,
+  orderCreatePosSuccess,
+  orderCreatePosFailure,
   orderListSuccess,
   orderListClear,
   orderListFailure,

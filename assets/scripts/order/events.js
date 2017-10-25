@@ -18,6 +18,20 @@ const onBtnOrderGet = function () {
   ui.showOrderGet()
 }
 
+const onBtnOrderPos = function () {
+  ui.showOrderPos()
+}
+
+const onPosButtonPress = function (event) {
+  const desc = event.target.getAttribute('data-description')
+  const price = event.target.getAttribute('data-price')
+  ui.posBtnPress(desc, price)
+}
+
+const onPosButtonClear = function () {
+  ui.posButtonClear()
+}
+
 const onBtnOrderSearch = function (event) {
   event.preventDefault()
   const orderId = $('#order-edit-input-id').val()
@@ -32,6 +46,14 @@ const onOrderCreate = function (event) {
   api.orderCreate(data)
     .then(ui.orderCreateSuccess)
     .catch(ui.orderCreateFailure)
+}
+
+const onOrderCreatePos = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  api.orderCreate(data)
+    .then(ui.orderCreatePosSuccess)
+    .catch(ui.orderCreatePosFailure)
 }
 
 const onOrderList = function (event) {
@@ -84,12 +106,15 @@ const addHandlers = function () {
   $('#btn-order-list').on('click', onBtnOrderList)
   $('#order-edit-input').on('submit', onBtnOrderSearch)
   $('#btn-order-get').on('click', onBtnOrderGet)
+  $('#btn-order-pos').on('click', onBtnOrderPos)
   $('#order-create').on('submit', onOrderCreate)
+  $('#order-create-pos-lhs').on('submit', onOrderCreatePos)
   $('#order-list').on('submit', onOrderList)
   $('#order-update').on('submit', onOrderUpdate)
   $('#order-delete-confirm').on('click', onOrderDestroy)
   $('.update-status').on('click', onOrderStatusUpdate)
-  $('.order-edit-status').attr('disabled', true)
+  $('.pos-btn-item').on('click', onPosButtonPress)
+  $('#order-pos-btn-clear').on('click', onPosButtonClear)
 }
 
 module.exports = {

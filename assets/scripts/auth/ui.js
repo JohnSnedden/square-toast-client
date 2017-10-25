@@ -51,6 +51,7 @@ const signOutSuccess = function () {
   $('#order-list-content').empty()
   $('#btn-order-list').removeClass('btn-primary')
   $('#btn-order-get').removeClass('btn-primary')
+  $('#order-create-pos').addClass('hidden')
 }
 
 const signOutFailure = function () {
