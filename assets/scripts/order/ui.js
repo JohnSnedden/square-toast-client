@@ -92,6 +92,24 @@ const orderGetSuccess = function (data) {
   $('#order-edit-status-pill').text(data.order.status)
   $('#order-edit-description').val(data.order.description)
   $('#order-edit-price').val(data.order.price)
+
+  // enable/disable status buttons according to order status
+  if (data.order.status === 'open') {
+    $('#btn-status-update').prop('disabled', false)
+    $('#btn-status-complete').prop('disabled', false)
+    $('#btn-status-reopen').prop('disabled', true)
+    $('#btn-status-delete').prop('disabled', false)
+  } else if (data.order.status === 'complete') {
+    $('#btn-status-update').prop('disabled', true)
+    $('#btn-status-complete').prop('disabled', true)
+    $('#btn-status-reopen').prop('disabled', false)
+    $('#btn-status-delete').prop('disabled', true)
+  } else {
+    $('#btn-status-update').prop('disabled', false)
+    $('#btn-status-complete').prop('disabled', false)
+    $('#btn-status-reopen').prop('disabled', false)
+    $('#btn-status-delete').prop('disabled', false)
+  }
 }
 
 const orderGetFailure = function () {

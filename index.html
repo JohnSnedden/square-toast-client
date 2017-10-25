@@ -212,11 +212,13 @@
                   <label for="order-edit-price">Price</label>
                   <input type="number" class="form-control" id="order-edit-price" name="order[price]" placeholder="0.00" min="0.00" step=".01" required>
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit">Update</button>
-                <button type="button" class="btn btn-success update-status" data-status="closed" >Close</button>
-                <button type="button" class="btn btn-warning update-status" data-status="open" >Reopen</button>
-                <button type="button" class="btn btn-warning update-status" data-status="cancelled" >Cancel</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#orderDeleteConfirmation">Delete</button>
+                <!-- status update buttons -->
+                <div>
+                  <button type="submit" class="btn btn-primary" id="btn-status-update" name="submit">Update</button>
+                  <button type="button" class="btn btn-success update-status" id="btn-status-complete" data-status="complete" >Complete</button>
+                  <button type="button" class="btn btn-warning update-status" id="btn-status-reopen" data-status="open">Reopen</button>
+                  <button type="button" class="btn btn-danger" id="btn-status-delete" data-toggle="modal" data-target="#orderDeleteConfirmation">Delete</button>
+                </div>
               </form>
             </div>
           </div>
